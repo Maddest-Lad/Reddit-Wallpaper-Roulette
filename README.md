@@ -5,7 +5,7 @@ A simple python script to set your wallpaper to the top image of the day from a 
 Modify `example_windows.bat` replacing `C:\Path\To\python.exe` with the path to your python 3 executable
 Then replace `C:/Path/To/automated_version.py` with your path to `automated_version.py`
 
-Open up Windows Task Scheduler with `win r` and then entering `%windir%\system32\taskschd.msc /s`. Or you can find it somewhere in control panel.
+Open up Windows Task Scheduler with `windows key + r` and then entering `%windir%\system32\taskschd.msc /s`. Or you can find it somewhere in control panel.
 
 Click Create Basic Task
 
