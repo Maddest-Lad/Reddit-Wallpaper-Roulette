@@ -10,4 +10,5 @@ Warning, I Don't Have a Mac / Linux Device To Test This, It May Take Some Debugg
 
 Run:
 `crontab -e`
+
 `0 12 * * * /usr/bin/python3 /path_to_automated_version.py >> ~/cron.log 2>&1`
