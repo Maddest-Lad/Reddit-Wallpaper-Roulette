@@ -13,6 +13,7 @@ Give The Task Some Random Name, Then Follow The Dialogue Until You Reach `Action
 
 In `Action`, Navigate To Your `example_windows.bat` file, select it and you should be all set!
 
+If the script keeps opening a CMD window, you may need to rename `automated_version.py` to `automated_version.pyw` and change `example_windows.bat` to reflect that. 
 
 
 # OSX and Linux Setup [(Based On This)](https://medium.com/@gavinwiener/how-to-schedule-a-python-script-cron-job-dea6cbf69f4e)
