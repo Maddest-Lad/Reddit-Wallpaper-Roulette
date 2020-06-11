@@ -1,22 +1,22 @@
-from urllib import request, error
-import json
-import sys
 import ctypes
-import time
+import json
 import random
-from threading import Timer
+import time
 from os import path, getcwd, makedirs, chdir
+from urllib import request, error
 
 # Constants & Important Variables
 names = ["happy", "standard", "funny"]
 happy_subreddits = ["aww", "WhatsWrongWithYourDog"]
-standard_subreddits = ["pics", "Images", "wallpaper", "itookapicture", "Art", "generativeart", "generative", "CozyPlaces"]
+standard_subreddits = ["pics", "Images", "wallpaper", "itookapicture", "Art", "generativeart", "generative",
+                       "CozyPlaces"]
 funny_subreddits = ["Beans", "delusionalartists", "classicalartmemes"]
 combined = (happy_subreddits, standard_subreddits, funny_subreddits)
 
-
 timeout = 10  # Time Out time for the user selection
 choice = None  # which subreddit it gets an image from
+
+user_choice = False
 
 # File Path
 file_path = path.join(getcwd(), "image_storage")
@@ -28,21 +28,20 @@ if not path.exists(file_path):
 # Choose That Filepath
 chdir(file_path)
 
-# Allow User To Choose Subreddit Pool, Defaults to Random After 10 Seconds
-for h, i, j in zip([i for i in range(0, len(combined))], names, combined):
-    print(h, i, ": ", [i for i in j])
+# Allow User To Choose Subreddit Pool, If UserChoice is False Defaults to Random Subreddit
+if user_choice:
 
+    # Fancy Way Of Printing Out Categories, h : 0-3, i : category, j : what's in each category
+    for h, i, j in zip([i for i in range(0, len(combined))], names, combined):
+        print(h, i, ": ", [i for i in j])
 
-asker = Timer(timeout, print, ["Times Up, Picking Randomly"])
-asker.start()
-answer = int(input("\nYou Have 10 Seconds, Please Select Your Category, Otherwise Pray to RNGesus: "))
-asker.cancel()
+    answer = int(input("\nYou Have 10 Seconds, Please Select Your Category, Otherwise Pray to RNGesus: "))
 
-if answer is not None:
     choice = random.choice(combined[answer])
-else:
-    choice = random.choice(combined)
 
+else:
+    # Chooses Randomly
+    choice = random.choice(combined)
 
 # Find Daily Top Post - AFAIK it's magic
 url = "https://www.reddit.com/r/" + choice + "/search.json?q=url%3A.jpg+OR+url%3A.png&sort=top&restrict_sr=on&t=day"
